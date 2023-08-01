@@ -1,0 +1,24 @@
+function sumOfDistinctElements(set1, set2) {
+  // Step 1: Merge both sets into a single array
+  const mergedArray = set1.concat(set2);
+
+  // Step 2 and Step 3: Create an object to keep track of distinct elements and their counts
+  const elementCounts = {};
+  mergedArray.forEach(element => {
+    elementCounts[element] = (elementCounts[element] || 0) + 1;
+  });
+
+  // Step 4: Calculate the sum of distinct elements
+  let sumDistinct = 0;
+  for (const element in elementCounts) {
+    sumDistinct += parseInt(element, 10);
+  }
+
+  return sumDistinct;
+}
+
+// Example usage:
+const set1 = [3, 1, 7, 9];
+const set2 = [2, 4, 1, 9, 3];
+const output = sumOfDistinctElements(set1, set2);
+console.log(output); // Output: 13
